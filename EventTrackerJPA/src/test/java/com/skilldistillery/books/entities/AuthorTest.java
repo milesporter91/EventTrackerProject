@@ -16,11 +16,11 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-class BookTest {
+class AuthorTest {
 	
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Book book;
+	private Author author;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -35,25 +35,25 @@ class BookTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		book = em.find(Book.class, 1);	}
+		author = em.find(Author.class, 1);	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		book = null;
+		author = null;
 	}
 
 	@Test
-	void test_Book_entity_mapping() {
-		assertNotNull(book);
-		assertEquals("Empire of the Vampire", book.getTitle());
+	void test_Author_entity_mapping() {
+		assertNotNull(author);
+		assertEquals("Jay", author.getFirstName());
 	}
 	
 	@Test
-	void test_Book_Author_MTM_mapping() {
-		List<Author> authors = book.getAuthors();
-		assertTrue(authors.size() > 0);
-		assertEquals("Jay", authors.get(0).getFirstName());
+	void test_Author_Book_MTM_mapping() {
+		List<Book> books = author.getBooks();
+		assertTrue(books.size() > 0);
+		assertEquals("Empire of the Vampire", books.get(0).getTitle());
 	}
 
 }
