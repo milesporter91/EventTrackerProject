@@ -5,15 +5,15 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema books
+-- Schema booksdb
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `books` ;
+DROP SCHEMA IF EXISTS `booksdb` ;
 
 -- -----------------------------------------------------
--- Schema books
+-- Schema booksdb
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `books` DEFAULT CHARACTER SET utf8 ;
-USE `books` ;
+CREATE SCHEMA IF NOT EXISTS `booksdb` DEFAULT CHARACTER SET utf8 ;
+USE `booksdb` ;
 
 -- -----------------------------------------------------
 -- Table `book`
@@ -80,7 +80,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Data for table `book`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `books`;
+USE `booksdb`;
 INSERT INTO `book` (`id`, `title`, `release_date`, `price`) VALUES (1, 'Empire of the Vampire', '2021:09:07', 22.00);
 
 COMMIT;
@@ -90,7 +90,7 @@ COMMIT;
 -- Data for table `author`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `books`;
+USE `booksdb`;
 INSERT INTO `author` (`id`, `first_name`, `last_name`) VALUES (1, 'Jay', 'Kristoff');
 
 COMMIT;
@@ -100,7 +100,7 @@ COMMIT;
 -- Data for table `book_author`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `books`;
+USE `booksdb`;
 INSERT INTO `book_author` (`book_id`, `author_id`) VALUES (1, 1);
 
 COMMIT;
