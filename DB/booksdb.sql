@@ -82,6 +82,13 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `booksdb`;
 INSERT INTO `book` (`id`, `title`, `release_date`, `price`) VALUES (1, 'Empire of the Vampire', '2021:09:07', 22.00);
+INSERT INTO `book` (`id`, `title`, `release_date`, `price`) VALUES (2, 'Empire of the Damned', '2024:02:29', 23.00);
+INSERT INTO `book` (`id`, `title`, `release_date`, `price`) VALUES (3, 'Aurora Rising', '2019:05:05', 20.00);
+INSERT INTO `book` (`id`, `title`, `release_date`, `price`) VALUES (4, 'Aurora Burning', '2020:04:28', 20.00);
+INSERT INTO `book` (`id`, `title`, `release_date`, `price`) VALUES (5, 'Aurora\'s End', '2021:11:09', 25.00);
+INSERT INTO `book` (`id`, `title`, `release_date`, `price`) VALUES (6, 'Into The Wild', '1996:01:13', 10.00);
+INSERT INTO `book` (`id`, `title`, `release_date`, `price`) VALUES (7, 'Black Site', '2012:01:31', 10.00);
+INSERT INTO `book` (`id`, `title`, `release_date`, `price`) VALUES (8, 'Tier One Wild', '2012:10:16', 10.00);
 
 COMMIT;
 
@@ -92,6 +99,9 @@ COMMIT;
 START TRANSACTION;
 USE `booksdb`;
 INSERT INTO `author` (`id`, `first_name`, `last_name`) VALUES (1, 'Jay', 'Kristoff');
+INSERT INTO `author` (`id`, `first_name`, `last_name`) VALUES (2, 'Amie', 'Kaufman');
+INSERT INTO `author` (`id`, `first_name`, `last_name`) VALUES (3, 'Dalton', 'Fury');
+INSERT INTO `author` (`id`, `first_name`, `last_name`) VALUES (4, 'John', 'Krakauer');
 
 COMMIT;
 
@@ -102,6 +112,16 @@ COMMIT;
 START TRANSACTION;
 USE `booksdb`;
 INSERT INTO `book_author` (`book_id`, `author_id`) VALUES (1, 1);
+INSERT INTO `book_author` (`book_id`, `author_id`) VALUES (2, 1);
+INSERT INTO `book_author` (`book_id`, `author_id`) VALUES (3, 1);
+INSERT INTO `book_author` (`book_id`, `author_id`) VALUES (4, 1);
+INSERT INTO `book_author` (`book_id`, `author_id`) VALUES (5, 1);
+INSERT INTO `book_author` (`book_id`, `author_id`) VALUES (3, 2);
+INSERT INTO `book_author` (`book_id`, `author_id`) VALUES (4, 2);
+INSERT INTO `book_author` (`book_id`, `author_id`) VALUES (5, 2);
+INSERT INTO `book_author` (`book_id`, `author_id`) VALUES (6, 4);
+INSERT INTO `book_author` (`book_id`, `author_id`) VALUES (7, 3);
+INSERT INTO `book_author` (`book_id`, `author_id`) VALUES (8, 3);
 
 COMMIT;
 
