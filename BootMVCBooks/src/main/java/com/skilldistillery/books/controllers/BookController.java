@@ -39,10 +39,9 @@ public class BookController {
 	}
 	
 	@PostMapping({ "books", "books/" })
-	public Book putForBook(@PathVariable("authorId") int authorId, 
-			@RequestBody Book newBook, HttpServletResponse res, HttpServletRequest req) {
+	public Book putForBook(@RequestBody Book newBook, HttpServletResponse res, HttpServletRequest req) {
 		try {
-			newBook = bookService.create(authorId, newBook);
+			newBook = bookService.create(newBook);
 			if (newBook != null) {
 				res.setStatus(HttpServletResponse.SC_CREATED);
 				String url = req.getRequestURL().append("/").append(newBook.getId()).toString();
