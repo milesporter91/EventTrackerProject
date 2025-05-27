@@ -40,8 +40,12 @@ public class BookServiceImpl implements BookService {
 			if (updatedBook.getAuthors() != null) {
 			managedBook.setAuthors(updatedBook.getAuthors());
 			}
+			if (updatedBook.getPrice() > 0) {
 			managedBook.setPrice(updatedBook.getPrice());
+			}
+			if (updatedBook.getReleaseDate() != null) {
 			managedBook.setReleaseDate(updatedBook.getReleaseDate());
+			}
 			if (updatedBook.getTitle() != null && updatedBook.getTitle() != "") {
 			managedBook.setTitle(updatedBook.getTitle());
 			}
