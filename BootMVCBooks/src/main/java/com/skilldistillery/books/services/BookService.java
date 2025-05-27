@@ -8,5 +8,8 @@ public interface BookService {
 	
 	Book findById(int id);
 	List<Book> findAll();
+	Book create(int authorId, Book newBook);
+	Book update(int bookId, Book updatedBook);
+	boolean delete(int bookId);
 
 }
