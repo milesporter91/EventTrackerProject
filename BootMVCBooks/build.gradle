@@ -5,6 +5,13 @@ plugins {
 	id 'io.spring.dependency-management' version '1.1.7'
 }
 
+war {
+  // Gradle will replace the variable archivesBaseName
+  // with our app name, as defined in settings.gradle
+  archiveFileName = "${rootProject.name}.war"
+  destinationDirectory = file("../")     // Project workspace directory
+}
+   
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 
