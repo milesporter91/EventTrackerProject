@@ -1,6 +1,6 @@
 package com.skilldistillery.books.entities;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,14 +20,25 @@ public class Book {
 	private int id;
 	
 	@Column(name= "release_date")
-	private LocalDateTime releaseDate;
+	private LocalDate releaseDate;
 	
 	private double price;
 	
 	private String title;
 	
+	@Column(name= "date_started")
+	private LocalDate dateStarted;
+
+	@Column(name= "date_finished")
+	private LocalDate dateFinished;
+	
+	private Boolean finished;
+	
 	@ManyToMany(mappedBy = "books")
 	private List<Author> authors;
+	
+	@Column(name = "number_of_pages")
+	private int numberOfPages;
 
 	// Constructors
 	public Book() {
@@ -43,11 +54,11 @@ public class Book {
 		this.id = id;
 	}
 
-	public LocalDateTime getReleaseDate() {
+	public LocalDate getReleaseDate() {
 		return releaseDate;
 	}
 
-	public void setReleaseDate(LocalDateTime releaseDate) {
+	public void setReleaseDate(LocalDate releaseDate) {
 		this.releaseDate = releaseDate;
 	}
 
@@ -73,6 +84,38 @@ public class Book {
 
 	public void setAuthors(List<Author> authors) {
 		this.authors = authors;
+	}
+
+	public int getNumberOfPages() {
+		return numberOfPages;
+	}
+
+	public void setNumberOfPages(int numberOfPages) {
+		this.numberOfPages = numberOfPages;
+	}
+
+	public LocalDate getDateStarted() {
+		return dateStarted;
+	}
+
+	public void setDateStarted(LocalDate dateStarted) {
+		this.dateStarted = dateStarted;
+	}
+
+	public LocalDate getDateFinished() {
+		return dateFinished;
+	}
+
+	public void setDateFinished(LocalDate dateFinished) {
+		this.dateFinished = dateFinished;
+	}
+
+	public Boolean getFinished() {
+		return finished;
+	}
+
+	public void setFinished(Boolean finished) {
+		this.finished = finished;
 	}
 
 	// hashCode and equals

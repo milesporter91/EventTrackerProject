@@ -1,0 +1,14 @@
+#bookListDiv{
+	border: 2px dashed red;
+}
+
+.bookInfoRow {
+	border-bottom: 1px dashed blue;
+}
+
+#bookTableBody tr > td{
+	
+	border-bottom: 1px dashed blue;
+
+	
+	}

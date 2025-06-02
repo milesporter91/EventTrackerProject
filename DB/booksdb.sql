@@ -25,7 +25,12 @@ CREATE TABLE IF NOT EXISTS `book` (
   `title` VARCHAR(100) NOT NULL,
   `release_date` DATETIME NULL,
   `price` DECIMAL NULL,
-  PRIMARY KEY (`id`))
+  `date_started` DATETIME NULL,
+  `date_finished` DATETIME NULL,
+  `finished` TINYINT NULL,
+  `number_of_pages` INT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `title_UNIQUE` (`title` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
@@ -81,14 +86,14 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `booksdb`;
-INSERT INTO `book` (`id`, `title`, `release_date`, `price`) VALUES (1, 'Empire of the Vampire', '2021:09:07', 22.00);
-INSERT INTO `book` (`id`, `title`, `release_date`, `price`) VALUES (2, 'Empire of the Damned', '2024:02:29', 23.00);
-INSERT INTO `book` (`id`, `title`, `release_date`, `price`) VALUES (3, 'Aurora Rising', '2019:05:05', 20.00);
-INSERT INTO `book` (`id`, `title`, `release_date`, `price`) VALUES (4, 'Aurora Burning', '2020:04:28', 20.00);
-INSERT INTO `book` (`id`, `title`, `release_date`, `price`) VALUES (5, 'Aurora\'s End', '2021:11:09', 25.00);
-INSERT INTO `book` (`id`, `title`, `release_date`, `price`) VALUES (6, 'Into The Wild', '1996:01:13', 10.00);
-INSERT INTO `book` (`id`, `title`, `release_date`, `price`) VALUES (7, 'Black Site', '2012:01:31', 10.00);
-INSERT INTO `book` (`id`, `title`, `release_date`, `price`) VALUES (8, 'Tier One Wild', '2012:10:16', 10.00);
+INSERT INTO `book` (`id`, `title`, `release_date`, `price`, `date_started`, `date_finished`, `finished`, `number_of_pages`) VALUES (1, 'Empire of the Vampire', '2021:09:07', 22.00, '2021:09:07', '2021:09:10', 1, 768);
+INSERT INTO `book` (`id`, `title`, `release_date`, `price`, `date_started`, `date_finished`, `finished`, `number_of_pages`) VALUES (2, 'Empire of the Damned', '2024:02:29', 23.00, '2024:02:29', '2024:03:03', 1, 736);
+INSERT INTO `book` (`id`, `title`, `release_date`, `price`, `date_started`, `date_finished`, `finished`, `number_of_pages`) VALUES (3, 'Aurora Rising', '2019:05:05', 20.00, '2022:03:04', '2022:03:07', 1, 473);
+INSERT INTO `book` (`id`, `title`, `release_date`, `price`, `date_started`, `date_finished`, `finished`, `number_of_pages`) VALUES (4, 'Aurora Burning', '2020:04:28', 20.00, '2022:03:07', '2022:03:10', 1, 512);
+INSERT INTO `book` (`id`, `title`, `release_date`, `price`, `date_started`, `date_finished`, `finished`, `number_of_pages`) VALUES (5, 'Aurora\'s End', '2021:11:09', 25.00, '2022:03:10', '2022:03:14', 1, 493);
+INSERT INTO `book` (`id`, `title`, `release_date`, `price`, `date_started`, `date_finished`, `finished`, `number_of_pages`) VALUES (6, 'Into The Wild', '1996:01:13', 10.00, '2018:01:10', '2018:01:12', 1, 240);
+INSERT INTO `book` (`id`, `title`, `release_date`, `price`, `date_started`, `date_finished`, `finished`, `number_of_pages`) VALUES (7, 'Black Site', '2012:01:31', 10.00, '2016:02:22', '2016:02:24', 1, 528);
+INSERT INTO `book` (`id`, `title`, `release_date`, `price`, `date_started`, `date_finished`, `finished`, `number_of_pages`) VALUES (8, 'Tier One Wild', '2012:10:16', 10.00, '2016:02:24', '2016:02:26', 1, 528);
 
 COMMIT;
 
