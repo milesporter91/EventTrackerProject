@@ -42,7 +42,7 @@ function init(e) {
 	updateButton.addEventListener('click', function(e) {
 		e.preventDefault();
 		const updatedBook = {
-			id: parseInt(editBookForm.editBookId.value, 10),
+			id: parseInt(editBookForm.editBookId.value),
 			title: editBookForm.title.value,
 			releaseDate: editBookForm.bookReleaseDate.value,
 			dateStarted: editBookForm.dateStartedBook.value,
@@ -119,6 +119,10 @@ function displayBooks(books) {
 			deleteBook(book.id);
 		});
 		tr.appendChild(deleteButton);
+		tr.addEventListener('click', function(e) {
+			e.preventDefault();
+			displayBook(book);
+		} );
 	}
 }
 
@@ -237,10 +241,11 @@ function showEditForm(bookId) {
 				editBookForm.editBookId.value = book.id;
 				editBookForm.bookTitle.value = book.title;
 				editBookForm.bookReleaseDate.value = book.releaseDate;
-				editBookFormd.dateStartedBook.value = book.dateStarted;
-				editBookFormd.dateFinishedBook.value = book.dateFinished;
-				editBookForm.bookPageCount.value = book.pageCount;
+				editBookForm.dateStartedBook.value = book.dateStarted;
+				editBookForm.dateFinishedBook.value = book.dateFinished;
+				editBookForm.bookPageCount.value = book.numberOfPages;
 				editBookForm.bookFinished.value = book.finished;
+				editBookForm.bookPrice.value = book.price;
 			} else {
 				console.error("GET request failed.");
 				console.error(xhr.status + ': ' + xhr.responseText);
@@ -258,7 +263,7 @@ function updateBook(book) {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === XMLHttpRequest.DONE) {
 			if (xhr.status === 200) {
-				displayBook(book.id);
+				displayBook(book);
 				showHome();
 			} else {
 				console.error("PUT request failed.");
