@@ -1,0 +1,91 @@
+<h1>Total Pages Read: {{getPagesReadCount()}}</h1>
+@if (selected && !newBookForm && !editBook) {
+<h1>Title: {{selected.title}}</h1>
+@if (selected.authors.length === 1) {
+<h2>
+  Author: {{selected.authors[0].firstName}} {{selected.authors[0].lastName}}
+</h2>
+} @if (selected.authors.length > 1) {
+<h2>
+  Authors: @for (author of selected.authors; track $index) {
+  {{author.firstName}} {{author.lastName}} }
+</h2>
+}
+<h3>Release Date: {{selected.releaseDate}}</h3>
+<h3>Page Count: {{selected.numberOfPages}}</h3>
+<h4>Date Started: {{selected.dateStarted}}</h4>
+<h4>Date Finished: {{selected.dateFinished}}</h4>
+<button class="btn btn-primary" (click)="displayTable()">Go back</button>
+
+} @if (!selected && !newBookForm && !editBook) {
+<div class="allBooksTable">
+  <table class="table table-hover">
+    <thead>
+      <tr class="table-dark">
+        <th>Title</th>
+        <th>Author(s)</th>
+        <th>Release Date</th>
+        <th>Pages</th>
+        <th>Finished</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (book of books; track $index) {
+      <tr (click)="displayBook(book)">
+        <td>{{book.title}}</td>
+        <td>
+          @for (author of book.authors; track $index) { {{author.firstName}}
+          {{author.lastName}}@if (book.authors.length > 1 && $index <
+          book.authors.length - 1) {, } }
+        </td>
+        <td>{{book.releaseDate}}</td>
+        <td>{{book.numberOfPages}}</td>
+        <td>{{book.finished}}</td>
+        <td><button class="btn btn-warning" (click)="showUpdateForm(book); $event.stopPropagation()">Edit Book</button></td>
+         <td><button class="btn btn-danger" (click)="deleteBook(book.id); $event.stopPropagation()">Delete Book</button></td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  <button class="btn btn-outline-primary" (click)="displayNewBookForm()">
+    Add New Book
+  </button>
+</div>
+} @if (newBookForm && !selected && !editBook) {
+<div>
+  <form>
+    Title:
+    <input type="text" name="newBookTitle" [(ngModel)]="newBook.title" /><br />
+    Release Date:
+    <input
+      type="date"
+      name="newBookReleaseDate"
+      [(ngModel)]="newBook.releaseDate"
+    /><br />
+    Number of Pages:
+    <input
+      type="number"
+      name="newBookNumberOfPages"
+      [(ngModel)]="newBook.numberOfPages"
+    /><br />
+    Finished: <input type="checkbox" name="finished" [(ngModel)]="newBook.finished"><br>
+    <button class="btn btn-success" (click)="addBook(newBook)">Add Book</button>
+  </form>
+</div>
+}
+
+@if (!newBookForm && !selected && editBook !== null) {
+  <form>
+  Title: <input type="text" name="title" [(ngModel)]="editBook.title" /> <br />
+  Release Date:
+  <input type="date" name="releaseDate" [(ngModel)]="editBook.releaseDate" />
+ Number of Pages: <input type="number" name="numberOfPages" [(ngModel)]="editBook.numberOfPages" />
+  Finished: <input type="checkbox" name="finished" [(ngModel)]="editBook.finished" />
+  <br />
+
+  <button (click)="editBook = null">Cancel</button>
+  <button (click)="updateBook(editBook); $event.preventDefault()">Save</button>
+</form>
+}
