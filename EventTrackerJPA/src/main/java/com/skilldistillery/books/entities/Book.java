@@ -27,10 +27,10 @@ public class Book {
 	private String title;
 	
 	@Column(name= "date_started")
-	private LocalDate dateStarted;
+	private String dateStarted;
 
 	@Column(name= "date_finished")
-	private LocalDate dateFinished;
+	private String dateFinished;
 	
 	private Boolean finished;
 	
@@ -94,19 +94,19 @@ public class Book {
 		this.numberOfPages = numberOfPages;
 	}
 
-	public LocalDate getDateStarted() {
+	public String getDateStarted() {
 		return dateStarted;
 	}
 
-	public void setDateStarted(LocalDate dateStarted) {
+	public void setDateStarted(String dateStarted) {
 		this.dateStarted = dateStarted;
 	}
 
-	public LocalDate getDateFinished() {
+	public String getDateFinished() {
 		return dateFinished;
 	}
 
-	public void setDateFinished(LocalDate dateFinished) {
+	public void setDateFinished(String dateFinished) {
 		this.dateFinished = dateFinished;
 	}
 
